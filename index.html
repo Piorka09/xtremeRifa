@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equipo de Beach Voley XTREME</title>
+<title>Sorteo Aleatorio</title>
+<a href="sorteo.html"></a>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    .container {
+        margin-top: 50px;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    
+    body {
+    
+   /* background: linear-gradient(135deg, #3494E6, #EC6EAD, #29ca4c);*/
+   background-image: url('xtreme.jpg');
+   background-size: 50% 50% ;
+    animation: gradient 15s ease infinite;
+    }
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.container {
+    place-items: center;
+    margin: 0 auto;
+    padding: 100px;
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.titulo {
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    text-transform: uppercase;
+    font-size: 50px;
+}
+
+.header {
+    text-align: center;
+    /* background: linear-gradient(to right, #ad5ef3, #403ddd, #60f560, #f5ff63); */
+    background: linear-gradient(to right, #fafafac7, #fdfdfdc7, #ffffffc7);
+    color: rgb(0, 0, 0);
+    padding: 50px 0;
+}
+
+.header h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 6em;
+    margin: 5px 0;
+}
+
+.header h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 3em;
+    margin: 5px 0;
+}
+
+.container button{
+    padding: 20px 40px;
+    font-size: 30px;
+    color: white;
+    background-color: #6b4ae2;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.2s;
+ 
+}
+
+.container button:hover {
+    background-color: #ab95fd;
+}
+
+.container button:active {
+    transform: scale(0.95);
+}
+
+.container p{
+    font-size: 20px;
+}
+
+.container h2{
+    font-size: 100px;
+}
+
+
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999; /* Asegura que el confeti esté en la capa más alta */
+}
+</style>
+</head>
+<body>
+    <header class="header">
+        <h1>Equipo de Beach Voley</h1>
+        <h2>XTREME</h2>
+    </header>
+<div class = "imagen">
+    <div class="overlay"></div>
+ <!-- <img src="xtreme.jpg"> -->
+</div>
+<br> 
+<div class="container">
+    
+    <h1 class="titulo">Sorteo de moto</h1>
+    <p>Número Ganador:</p>
+    <h2 id="numeroGanador"></h2>
+    <button onclick="realizarSorteo(),createConfetti()">Realizar Sorteo</button>
+</div>
+<canvas id="confetti-canvas"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/confetti-js"></script>
+<script>
+function realizarSorteo() {
+    // Generar un número aleatorio entre 1 y 300
+    const numeroGanador = Math.floor(Math.random() * 300) + 1;
+    
+    // Formatear el número para que tenga tres dígitos
+    const numeroFormateado = String(numeroGanador).padStart(3, '0');
+    
+    // Mostrar el número ganador en la página
+    document.getElementById('numeroGanador').innerText = numeroFormateado;
+}
+function createConfetti() {
+    var confettiSettings = { target: 'confetti-canvas' };
+    var confetti = new ConfettiGenerator(confettiSettings);
+    confetti.render();
+  
+    setTimeout(function() {
+        confetti.clear();
+    }, 3000);
+}
+</script>
+</body>
+</html>
